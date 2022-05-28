@@ -262,7 +262,7 @@ class HomePage extends React.Component {
                 <p>Este es el Viva Quiz</p>
                 <Accordion >
                 <Accordion.Item eventKey="-1">
-                <Accordion.Header><span className="fw-bold">Ingrese o modifique un cuestionario</span></Accordion.Header>
+                <Accordion.Header><h2 className="fw-bold">+&nbsp;&nbsp;</h2><span>Ingrese o modifique un cuestionario</span></Accordion.Header>
                 <Accordion.Body>
                 <form name="form" onSubmit={this.handleSubmit}>
                     <div className={'form-group' + (submitted && !question.name ? ' has-error' : '')}>
@@ -283,7 +283,7 @@ class HomePage extends React.Component {
                     </div>
                     <br/>
                     <div className="form-group">
-                        <button name="agregar" className="btn btn-primary">{this.state.selectId ? 'Actualizar' : 'Agregar' }</button>
+                        <button name="agregar" className="btn btn-primary">{this.state.selectId ? 'Actualizar' : 'Agregar' } Cuestionario</button>
                         {registering && 
                             <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                         }
@@ -303,12 +303,12 @@ class HomePage extends React.Component {
                     : question.deleteError ? <span className="fw-bold text-danger"> - ERROR: {question.deleteError}</span>
                     : <span className="fw-bold"> <a onClick={this.handleDeleteQuestion(question.id)}>Borrar</a></span>
                  }
-                <span className="fw-bold" onClick={this.handleSelectQuestion(question)}> - <CustomToggle eventKey="-1">Seleccionar</CustomToggle></span>
+                <span className="fw-bold"> - <a onClick={this.handleSelectQuestion(question)}><CustomToggle eventKey="-1">Actualizar</CustomToggle></a></span>
                 <span className="fw-bold"><a onClick={this.toPlay(question.id, question.name + ' (' + question.description + ')' ) }> - Jugar</a></span>
 
                     <Accordion >
                         <Accordion.Item eventKey="-1">
-                        <Accordion.Header><span className="fw-bold">Agregue o modifique preguntas</span></Accordion.Header>
+                        <Accordion.Header><h2 className="fw-bold">+&nbsp;&nbsp;</h2><span>Agregue o modifique preguntas</span></Accordion.Header>
                         <Accordion.Body>
                             <form name="form" onSubmit={this.handleSubmitItem}>
                                         <div className={'form-group' + (submittedItem && !item.questionItem ? ' has-error' : '')}>
@@ -327,17 +327,17 @@ class HomePage extends React.Component {
                                             }
                                         </div>
                                         }
-                                        <ul class="list-group">
-                                        <li onClick={itemResponse.response && this.handleAddQuestionItemResponse(itemResponse.response, question.id)} class="list-group-item active">+ Respuesta</li>
+                                        <ul className="list-group">
+                                        <a  onClick={itemResponse.response && this.handleAddQuestionItemResponse(itemResponse.response, question.id)}><li className="list-group-item active">Agregue respuestas (la primera es la correcta)</li></a>
                                         {itemResponses.map((Response, index) =>
-                                        <li  key={index} onClick={this.handleDeleteQuestionItemResponse(index)} 
-                                        className={'list-group-item list-group-item-' + (Response.isTrue ? 'success' : 'danger')}>{Response.response }</li>
+                                        <a key={index} onClick={this.handleDeleteQuestionItemResponse(index)}><li
+                                        className={'list-group-item list-group-item-' + (Response.isTrue ? 'success' : 'danger')}>{Response.response }</li></a>
                                         )}
                                         </ul>
 
                                         <br/>
                                         <div className="form-group">
-                                            <button name="agregar" className="btn btn-primary">{this.state.selectItemId ? 'Actualizar' : 'Agregar' }</button>
+                                            <button name="agregar" className="btn btn-primary">{this.state.selectItemId ? 'Actualizar' : 'Agregar' } Preguntas</button>
                                             {registering && 
                                                 <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                                             }
@@ -358,10 +358,10 @@ class HomePage extends React.Component {
                             : items.deleteError ? <span className="fw-bold text-danger"> - ERROR: {question.deleteError}</span>
                             : <span className="fw-bold"> <a onClick={this.handleDeleteQuestionItem(item._id)}>Borrar</a></span>
                         }
-                        <span className="fw-bold" onClick={this.handleSelectQuestionItem(item)}> - <CustomToggle eventKey="-1">Seleccionar</CustomToggle></span>
-                            <ul class="list-group">
-                                    {item.responses.map((Response, index) =>
-                                    <li  key={index}
+                        <span className="fw-bold" > - <a onClick={this.handleSelectQuestionItem(item)}><CustomToggle eventKey="-1">Actualizar</CustomToggle></a></span>
+                            <ul className="list-group">
+                                    {item.responses.sort((a, b) => (a._id > b._id) ? 1 : -1).map((Response, index) =>
+                                    <li key={index}
                                     className={'list-group-item list-group-item-' + (Response.isTrue ? 'success' : 'danger')}>{Response.response}</li>
                                     )}
                             </ul>
@@ -376,16 +376,16 @@ class HomePage extends React.Component {
                 ) : '' }
                 </Accordion>
 
-            <Modal size="lg" show={showModal} onHide={this.handleClose}>
+            <Modal size="lg" show={showModal} onHide={this.toFinish()}>
                 <Modal.Header closeButton>
                 <Modal.Title>{toPlayQuestionName}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                 {items.items ? items.items.filter(item =>item.questionId.includes(toPlayQuestionId))
                 .map((item, _index) =>
-                <ul key={item._id} class="list-group" > 
-                    <li onClick={itemResponse.response && this.handleAddQuestionItemResponse(itemResponse.response, question.id)} class="list-group-item active">{item.questionItem + (responsesIsTrue[item._id] ? responsesIsTrue[item._id] == 1  ? ' (Correcto)' : ' (Incorrecto)' : '')}</li>
-                    {item.responses.sort((a, b) => Math.random() -  Math.random() )
+                <ul  key={item._id} className="list-group" > 
+                    <a onClick={itemResponse.response && this.handleAddQuestionItemResponse(itemResponse.response, question.id)}><li className="list-group-item active">{item.questionItem + (responsesIsTrue[item._id] ? responsesIsTrue[item._id] == 1  ? ' (Correcto)' : ' (Incorrecto)' : '')}</li></a>
+                    {item.responses.sort((a, b) => (a.response > b.response) ? 1 : -1)
                     .map((Response, index) =>
                     <a  onClick={responsesIsTrue[item._id]  ? this.clickResponse(item._id, Response.isTrue, false) : this.clickResponse(item._id, Response.isTrue)}>
                     <li key={index} 

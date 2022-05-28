@@ -35,9 +35,9 @@ class App extends React.Component {
                                         <a className="navbar-brand" href="#page-top">Viva Quiz</a>
                                         <div className="collapse navbar-collapse" id="navbarResponsive">
                                             <ul className="navbar-nav ms-auto">
-                                            <li className="nav-item text-white"><Link class="nav-link" to="/login">{localStorage.getItem('user') ? 'Logout' : 'Login'}</Link></li>
+                                            <li className="nav-item text-white"><Link className="nav-link" to="/login">{localStorage.getItem('user') ? 'Logout' : 'Login'}</Link></li>
                                             {!localStorage.getItem('user') ?
-                                            <li className="nav-item text-white"><Link class="nav-link" to="/register">Registro</Link></li>
+                                            <li className="nav-item text-white"><Link className="nav-link" to="/register">Registro</Link></li>
                                             : ''}
                                             </ul>
                                         </div>

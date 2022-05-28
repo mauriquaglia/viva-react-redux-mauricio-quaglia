@@ -23,6 +23,7 @@ module.exports = {
         // global app config object
         config: JSON.stringify({
             apiUrl: 'https://api.ideandosoft.com:4000'
+            //apiUrl: 'https://localhost:4000'
         })
     }
 }
