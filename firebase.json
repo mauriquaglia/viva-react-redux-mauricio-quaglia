@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "public": "public",
+    "site": "viva-quiz",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
